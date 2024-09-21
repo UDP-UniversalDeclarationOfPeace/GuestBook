@@ -2,16 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import { ThirdwebProvider } from '@thirdweb-dev/react'; // Importar el proveedor de ThirdWeb
 import reportWebVitals from './reportWebVitals';
+import { authConfig } from './thirdweb-config'; // Importar la configuración de auth
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
-    <App />
+    <ThirdwebProvider authConfig={authConfig}> {/* Wrapping the app in ThirdWebProvider */}
+      <App />
+    </ThirdwebProvider>
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+// Opcional para medir rendimiento de tu app
 reportWebVitals();
